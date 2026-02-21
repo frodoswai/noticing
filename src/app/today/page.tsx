@@ -47,7 +47,7 @@ export default async function TodayPage() {
               name="answer_1"
               rows={4}
               defaultValue={entry?.answer_1 ?? ""}
-              className="w-full rounded-2xl border border-line bg-transparent px-4 py-3 text-sm focus:border-foreground focus:outline-none"
+              className="w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm text-black placeholder:text-gray-400 focus:border-foreground focus:outline-none"
               placeholder="A moment, a detail, a scene..."
             />
           </div>
@@ -60,7 +60,7 @@ export default async function TodayPage() {
               name="answer_2"
               rows={4}
               defaultValue={entry?.answer_2 ?? ""}
-              className="w-full rounded-2xl border border-line bg-transparent px-4 py-3 text-sm focus:border-foreground focus:outline-none"
+              className="w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm text-black placeholder:text-gray-400 focus:border-foreground focus:outline-none"
               placeholder="Something quiet but present..."
             />
           </div>
@@ -73,7 +73,7 @@ export default async function TodayPage() {
               name="answer_3"
               rows={4}
               defaultValue={entry?.answer_3 ?? ""}
-              className="w-full rounded-2xl border border-line bg-transparent px-4 py-3 text-sm focus:border-foreground focus:outline-none"
+              className="w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm text-black placeholder:text-gray-400 focus:border-foreground focus:outline-none"
               placeholder="A direction, a shift, a choice..."
             />
           </div>
