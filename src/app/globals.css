@@ -48,4 +48,11 @@ a {
 textarea,
 input {
   font-family: inherit;
+  color: #1f1f1f;
+  background: transparent;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: #6f6b66;
 }
