@@ -78,7 +78,7 @@ export default async function TodayPage() {
             />
           </div>
 
-          <button className="rounded-full bg-foreground px-6 py-2 text-sm font-semibold text-panel transition hover:opacity-90">
+          <button className="rounded-full bg-foreground px-6 py-2 text-sm font-semibold text-white transition hover:opacity-90">
             Save entry
           </button>
         </form>

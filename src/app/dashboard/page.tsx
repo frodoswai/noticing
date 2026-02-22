@@ -26,11 +26,9 @@ export default async function DashboardPage() {
     .limit(12);
 
   const latestReflection = reflections?.[0];
-  const currentWeekStart = new Date(
-    Date.now() - 6 * 24 * 60 * 60 * 1000
-  )
-    .toISOString()
-    .slice(0, 10);
+  const weekStartCandidate = new Date();
+  weekStartCandidate.setDate(weekStartCandidate.getDate() - 6);
+  const currentWeekStart = weekStartCandidate.toISOString().slice(0, 10);
 
   const isThisWeek = Boolean(
     latestReflection && latestReflection.week_start >= currentWeekStart
@@ -41,6 +39,13 @@ export default async function DashboardPage() {
         isThisWeek ? index !== 0 : true
       )
     : [];
+
+  const { data: entries } = await supabase
+    .from("entries")
+    .select("id, date, answer_1, answer_2, answer_3")
+    .eq("user_id", user.id)
+    .order("date", { ascending: false })
+    .limit(7);
 
   return (
     <div className="min-h-screen px-6 py-12 sm:px-12">
@@ -65,7 +70,7 @@ export default async function DashboardPage() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/today"
-              className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-panel transition hover:opacity-90"
+              className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90"
             >
               Today&apos;s entry
             </Link>
@@ -113,6 +118,40 @@ export default async function DashboardPage() {
             </div>
           ) : (
             <p className="text-muted">No past reflections yet.</p>
+          )}
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold">Past entries</h2>
+          {entries && entries.length > 0 ? (
+            <div className="space-y-4">
+              {entries.map((entry) => (
+                <article
+                  key={entry.id}
+                  className="rounded-2xl border border-line bg-panel p-6"
+                >
+                  <p className="text-sm text-muted">
+                    {formatDate(entry.date)}
+                  </p>
+                  <div className="mt-4 space-y-3 text-sm text-foreground">
+                    <p>
+                      <span className="font-semibold">Stood out:</span>{" "}
+                      {entry.answer_1 || "—"}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Subtly meaningful:</span>{" "}
+                      {entry.answer_2 || "—"}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Decision sensed:</span>{" "}
+                      {entry.answer_3 || "—"}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="text-muted">No entries yet.</p>
           )}
         </section>
       </div>

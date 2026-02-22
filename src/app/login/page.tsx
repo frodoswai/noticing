@@ -93,7 +93,7 @@ export default function LoginPage() {
             <button
               onClick={handleSignIn}
               disabled={isDisabled}
-              className="flex-1 rounded-full bg-foreground px-6 py-2 text-sm font-semibold text-panel transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="flex-1 rounded-full bg-foreground px-6 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
               Sign in
             </button>
