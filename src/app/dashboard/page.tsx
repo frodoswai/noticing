@@ -70,7 +70,7 @@ export default async function DashboardPage() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/today"
-              className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+              className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-black border border-line transition hover:opacity-90"
             >
               Today&apos;s entry
             </Link>
